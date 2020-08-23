@@ -1,0 +1,208 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+  background-color: #f0f0f0;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+* {
+  font-family: 'Segoe UI', '微軟正黑體', sans-serif;
+}
+
+/* START */
+
+.debug, .debug * {
+  outline: 1px solid red; 
+}
+
+.wrapper {
+  max-width: 1920px;
+  width: 100%;
+
+}
+.navbar {
+  box-shadow: -1.4px -1.4px 6px 0 #97a2a0;
+  padding: 0px 24px;
+}
+
+.layout {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar__sitename {
+  font-size: 36px;
+  color: #489846;
+}
+
+.navbar__list {
+  display: flex;
+  padding: 34px 61px;
+}
+
+.navbar__list li {
+  margin-left: 12px;
+  transition: background .2s ease-in;
+}　
+
+.navbar__list li.active a, .navbar__list li:hover a {
+  border-radius: 8px;
+  background: #ff7286;
+}
+
+.navbar__list li.active a, .navbar__list li:hover a{
+  border-radius: 8px;
+  background: #ff7286;
+  color: white;
+}
+
+.navbar__list li a{
+  list-style: none;
+  display: block;
+  text-decoration:none;
+  color:black;
+  padding: 15px 25px;
+  font-size: 18px;
+}
+
+.FAQ:hover {
+  cursor: pointer;
+}
+
+.FAQ__title {
+  border-left: solid 15px #a3dea2;
+  padding: 0px 0px 0px 15px;
+  margin-top: 75px;
+  margin-left: 577px;
+  margin-bottom: 60px;
+  font-size: 36px
+}
+
+.FAQ__questions {
+  margin-left: 300px;
+  margin-top:29px;
+}
+
+.questions__number {
+  display: inline;
+  text-align: left;
+  font-size: 24px;
+  font-family: Questrial;
+  font-weight: bold;
+  color: #70b282;
+}
+
+.questions__titie {
+  display: inline;
+  text-align: left;
+  margin-left: 16px;
+  font-size: 18px;
+  font-family: MicrosoftJhengHei;
+}
+
+.questions__titie:hover {
+}
+
+.questions__content {
+  margin-top: 24px;
+  margin-left: 60 px;
+  margin-bottom:45px;
+  max-width: 722px; 
+  font-size: 16px;
+  line-height: 1.5em;
+}
+
+.hidden .questions__content{
+  display: none;
+}
+
+.line {
+  margin-top: 28px;
+  width: 810px;
+  height: 1px;
+  background-color: #a6e2c0;
+}
+
+.footer__top {
+  margin-top: 41px;
+  display: flex;
+  justify-content: space-between;
+  background-color: #e8efee;
+  padding: 0px 25px 0px 107px;
+}
+
+.footer__info {
+  margin-top: 44px;
+  margin-bottom:39px;
+  font-size: 14px;
+}
+
+.info + .info {
+  margin-top: 16px;
+}
+
+.footer__logo  {
+  margin-top: 35px;
+  margin-bottom: 92px;
+  margin-right: 105px;
+}
+
+.footer__logoname {
+  font-size: 36px;
+  color: #489846;
+}
+
+.media__info {
+  font-size: 14px;
+  color: #484848;
+}
+
+.footer__bottom {
+  font-family: MicrosoftJhengHei;
+  font-size: 16px;
+  width: 100% ;
+  padding: 26px;
+  color: white;
+  text-align: center;
+  background-color: #35564b;
+}
+@media (max-width: 476px) {
+ 
+} 
