@@ -377,12 +377,12 @@ template {
 
 .navbar__list li {
   margin-left: 12px;
-  border-radius: 8px;
+  /*border-radius: 8px;*/
   transition: background .2s ease-in;
- 
 }
 
-.navbar__list li.active, .navbar__list li:hover {
+.navbar__list li.active, .navbar__list li:hover a {
+  border-radius: 8px;
   background: #ff7286;
 }
 
@@ -395,8 +395,8 @@ template {
   text-decoration: none;
   color: black;
   padding: 12px 24px;
+  font-size: 18px;
 }
-
 
 .banner {
   position: relative;/*為了讓遮罩能找到 banner 位置*/
@@ -428,12 +428,12 @@ template {
   font-weight: bold;
 }
 
-.wrapper {
+/*.wrapper {
   max-width: 1280px;
   margin: 0 auto;
   padding:0px 12px;
 }
-
+*/
 
 .h2 {
   margin: 0;

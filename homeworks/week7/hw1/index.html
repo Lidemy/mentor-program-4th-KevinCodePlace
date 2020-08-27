@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>新拖延運動</title>
+  <meta name=”viewport” content=”width=device-width, initial-scale=1.0″>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+	<div class="debug">
+		<form action="" class="postpone">
+		  <h1 class="postpone__title">新拖延運動報名表單</h1>
+		  <div class="postpone__description">
+            活動日期：2020/12/10 ~ 2020/12/11 
+          </div>
+          <div class="postpone__description">  
+            活動地點：台北市大安區新生南路二段1號
+          </div>
+          <div class="postpone__needed">
+            必填
+          </div>
+          <div class="postpone__group needed hide">
+            <p class="postpone__type">暱稱</p>
+            <input type="text" placeholder="您的回答" />
+            <p class="hidden__error">請填寫暱稱</p>
+          </div>
+          <div class="postpone__group needed hide">
+            <p class="postpone__type">電子郵件</p>
+            <input type="email" placeholder="您的電子郵件" />
+            <p class="hidden__error">請填寫電子郵件</p>
+          </div>
+          <div class="postpone__group needed hide">
+            <p class="postpone__type">手機號碼</p>
+            <input type="text" placeholder="您的手機號碼" />
+            <p class="hidden__error">請填寫手機號碼</p>
+          </div>
+          <div class="postpone__group needed hide">
+            <p class="postpone__type">報名類型</p>
+            <label for="bed" class="mb__23">
+            <input type="radio" name="activity" id="bed" />躺在床上用想像力實作
+            </label>
+            <label for="ground">
+            <input type="radio" name="activity" id="ground" />趴在地上滑手機找現成的
+            </label>
+            <p class="hidden__error">請填寫報名類型</p>
+          </div>
+          <div class="postpone__group needed hide">
+            <p class="postpone__type">怎麼知道這個活動的？</p>
+			<input type="text" placeholder="您的回答" />
+			<p class="hidden__error">請填寫資料來源</p>
+          </div>
+          <div class="postpone__group not__needed">
+            <p class="postpone__type">其他</p>
+            <p class="postpone__advise">對活動的一些建議</p>
+            <input type="text" placeholder="您的回答" />
+          </div>
+          <button class="postpone__btn">提交</button>
+          <p class="mt__21">請勿透過表單送出您的密碼。</p>
+		</form>
+		<footer>© 2020 © Copyright. All rights Reserved.</footer>
+	</div>
+	<script>
+		document.querySelector('form').addEventListener('submit', function(e){
+			e.preventDefault();
+			let hasError = false;
+			let values = {};
+
+            const elements = document.querySelectorAll('.needed');
+			for (element of elements) {
+			  const radios = element.querySelectorAll('input[type=radio]');
+			  const input = element.querySelector('input[type=text]');
+			  const email = element.querySelector('input[type=email]');
+			  let isValid = true;
+			  if (input) {
+			  	inputName = input.parentNode.querySelector('.postpone__type');
+			  	values[inputName.textContent] = input.value;
+			  	if (!input.value) {
+			  		isValid = false;
+			  	}
+			  }else if (radios.length) {
+			  	  isValid = [...radios].some(radio => radio.checked);
+			  	  if (isValid) {
+			  		let r = element.querySelector('input[type=radio]:checked');
+			  		let rName = r.parentNode.parentNode.querySelector('.postpone__type');
+			  		let rvalue = r.parentNode.textContent.replace(/\s*/g,"");
+			  		values[rName.textContent] = rvalue;
+			  	  }
+			   }else if (email) {
+			   	  emailName = email.parentNode.querySelector('.postpone__type');
+			      values[emailName.textContent] = email.value;
+			      if (!email.value) {
+			        isValid = false;
+			      }
+			   }else {
+			  	  continue;
+			   }
+
+			  if (!isValid) {
+				element.classList.remove('hide');
+				hasError = true;
+			  } else {
+				element.classList.add('hide');
+			  }
+			}
+			const noNeeds = document.querySelectorAll('.not__needed');
+			for (noNeed of noNeeds) {
+			  const text = noNeed.querySelector('input[type=text]');
+			  if (text) {
+			  	textName = text.parentNode.querySelector('.postpone__type');
+			  	if(text.value === "") text.value = "null";
+			  	values[textName.textContent] = text.value;
+			  }
+			}
+			if (!hasError) {
+			    alert(JSON.stringify(values));
+			}
+		})
+	</script>
+</body>
+</html>

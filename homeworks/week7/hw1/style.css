@@ -1,0 +1,173 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+  background-color: #f0f0f0;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+* {
+  font-family: 'Segoe UI', '微軟正黑體', sans-serif;
+}
+
+/* START */
+
+.debug, .debug * {
+/*   outline: 1px solid red; */
+}
+
+.postpone {
+  box-sizing: border-box;
+  border-top: 8px solid #fad312;
+  background-color: white;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+  padding: 54px 40px 35px 40px;
+  max-width: 639px;
+  margin: 129px auto 66px auto; /*上右下左*/ 
+}
+.postpone__title {
+   font-size: 36px;
+}
+
+.postpone__description {
+  font-size: 14px;
+  margin-top: 35px;
+}
+
+.postpone__description + .postpone__description {
+  margin-top: 11px;
+}
+
+.postpone__needed { 
+  margin-top: 22px;
+  font-size: 16px;
+  color:#e74149;
+  margin-bottom: 55px;
+}
+
+.postpone__needed:before {
+  content: "* ";
+  color:#e74149;
+}
+
+.postpone__group {
+  margin-bottom: 49px;
+}
+
+.postpone__group input {
+  box-sizing: border-box;
+  border: 1px solid #d0d0d0;
+}
+
+.postpone-group input([type="text"]) {
+  max-width: 287px;
+  width: 100%;
+  height: 23px;
+}
+
+.postpone__group input::placeholder {
+  font-size: 16px;
+  color: #afafaf;
+}
+
+.postpone__type {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+ .needed .postpone__type:after{
+  content: ' *';
+  color: #e74149;
+}
+
+.postpone__group label {
+  display: block;
+}
+
+.postpone__advise {
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+.postpone__btn {
+  outline: none;
+  border: 1px solid #fad312;
+  box-sizing: border-box;
+  width: 92px;
+  height: 40px;
+  border-radius: 3px;
+  background-color: #fad312;
+  font-size: 15px;
+}
+
+.mt__21 {
+  margin-top: 21px;
+  font-size: 14px;
+}
+
+.mb__23 {
+  margin-bottom: 23px;
+}
+
+.hide .hidden__error{
+  visibility: hidden;
+}
+
+.hidden__error {
+  margin-top: 10px;
+  color: #e74149;
+}
+
+footer {
+  background-color: black;
+  padding: 26px;
+  font-size: 13px;
+  color: #999999;
+  text-align: center;
+}
+
+@media (max-width: 476px) {
+ .postpone {
+    margin: 129px 10px 30px 10px;
+  }
+
+  .postpone-title {
+    font-size: 24px;
+  }
+}
+
