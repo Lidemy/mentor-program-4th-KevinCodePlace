@@ -58,9 +58,6 @@ table {
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
   padding: 54px 40px 35px 40px;
   max-width: 639px;
-  /* 我根據設計稿利用 margin 和 padding 設定表單內元素間的距離，並在最後加入整個表單的高度 1085px 
-  ，但最後還是爆版了，想問為甚麼會這樣? */
-  /* height: 1085px; */
   margin: 129px auto 66px auto;
 }
 
