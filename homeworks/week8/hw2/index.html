@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./style.css">
+	<title>實況網站</title>
+</head>
+<body>
+  <div class="wrapper">
+	  <nav class="navbar">
+	  	  <div class="navbar__title">Twitch Top Games</div>
+	  	    <ul class="top__games">
+	  		  <!-- <li class="games">League of Legends</li>
+	  		  <li class="games">Just chatting</li>
+	  		  <li class="games">Fortnite</li>
+	  		  <li class="games">FIFA20</li>
+	  		  <li class="games">Counter-Strike:Global Offensive</li> -->
+	  	    </ul>
+	  </nav>
+	  <div class="stream__background">
+	  	<div class="streamcard">
+	  		<div class="streamcard__title"><!-- League of Legend --></div>
+	  		<div class="streamcard__subtitle">Top 20 popular live streams sorted by current viewers</div>
+	  		<div class="streamcard__all">
+	  			<!-- <div class="streamcard__unit">
+	  				<div class="streamcard__previewpic">
+	  					 <a href="https://www.qries.com/">
+	  					 	<img alt="Qries" src="./gamebg.png">
+      					 </a>
+	  				</div>
+	  				<div class="streamcard__info">
+	  				  <div class="info__pic"><img src="./gamebg.png"></div>
+	  				  <div class="info__desc">
+	  				  	<div class="info__streamtitle">trio Scrim</div>
+		  				<div class="info__authorname">x2twins</div>	
+	  				  </div>
+	  				</div>
+	  			</div> -->
+	  		</div>
+	  	</div>
+	  </div>	
+  </div>
+  <script>
+  	
+    const errorMessage = "錯誤，請重試一次";
+    const url = "https://api.twitch.tv/kraken";
+    const key = "698a4q3m3cfh5k18xtvgx3xfo894iz";
+    
+    const streamcard = `<div class="streamcard__previewpic">
+	  					 <a href="&hyperlink">
+	  					 	<img alt="gamelivestream" src="&preview">
+      					 </a>
+	  				</div>
+	  				<div class="streamcard__info">
+	  				  <div class="info__pic"><img src="&avatar"></div>
+	  				  <div class="info__desc">
+	  				  	<div class="info__streamtitle">&streamTitle</div>
+		  				<div class="info__authorname">&authorName</div>	
+	  				  </div>
+	  				</div>`
+
+	const requestGames = new XMLHttpRequest();
+	requestGames.open( "GET", `${url}/games/top?limit=5` , true);
+	requestGames.setRequestHeader("Client-ID",key);
+	requestGames.setRequestHeader("Accept","application/vnd.twitchtv.v5+json");
+
+	requestGames.onload = function(){
+	   if(requestGames.status >= 200 && requestGames.status < 400) {
+	    	let games = JSON.parse(requestGames.response);
+			let topGames = games.top.map((game) => game.game.name);
+			document.querySelector('.streamcard__title').innerText = topGames[0];
+			changeChannel(topGames[0]);//先預設出現第一名遊戲的二十個影片內容
+			for(let topGame of topGames) {
+				addTitle(topGame); //把標題列的五個遊戲新增上去
+			}
+	    }else {
+	    	alert(errorMessage);
+	    }
+
+	    //點擊標題列的其他遊戲換二十個影片
+	    document.querySelector(".top__games").addEventListener("click",function(event){
+
+	    	//換內文的遊戲標題
+	    	document.querySelector('.streamcard__title').innerText = event.target.innerText;
+	    	//把原本的二十個影片清空
+	    	let removeEl = document.querySelector(".streamcard__all");
+	    	while(removeEl.firstChild) removeEl.removeChild(removeEl.firstChild);
+	    	//再補上點擊遊戲的二十個影片
+	    	changeChannel(event.target.innerText);
+	    });
+	}
+
+	requestGames.onerror = function(){
+		alert(errorMessage);
+	}
+	requestGames.send();
+ 
+    function addTitle(topGame){
+    	let title = document.querySelector(".top__games");
+ 		let titleLi = document.createElement("li");
+ 		titleLi.innerHTML = topGame;
+ 		titleLi.classList.add("games");
+    	title.appendChild(titleLi);
+    }
+
+    function changeChannel(gameTitle){
+    	const streamNum = 20;
+	    const requestStream = new XMLHttpRequest();
+	    requestStream.open("GET",`${url}/streams/?limit=${streamNum}&game=${gameTitle}`  ,true);
+	    requestStream.setRequestHeader("Client-ID",key);
+	    requestStream.setRequestHeader("Accept","application/vnd.twitchtv.v5+json");
+
+	    requestStream.onload = function(){
+	    	if(requestStream.status >= 200 && requestStream.status < 400) {
+	    		const datas = JSON.parse(requestStream.response);
+	    		addStream(datas,streamNum);
+	    	}else {
+	    		alert(errorMessage);
+	    	}
+	    }
+	    requestStream.onerror = function() {
+ 		  alert(errorMessage);
+	    }
+
+	    requestStream.send();
+    }
+
+    function addStream(liveStream,streamNum){
+    	//把一大包 liveStream 切成 20 個單位的 liveInfo
+    	const liveInfo = liveStream.streams.map((streams) => streams);
+
+    	for(let i = 0;i < streamNum;i++) {
+    		let element = document.createElement("div");
+    		element.classList.add("streamcard__unit");
+
+    		let hyperlink = liveInfo[i].channel.url;
+    		let preview = liveInfo[i].preview.medium; 
+    		let avatar =liveInfo[i].channel.logo;
+    		let streamTitle=liveInfo[i].channel.display_name;
+    		let authorName=liveInfo[i].channel.name;
+
+    		let content = streamcard
+    		  .replace("&hyperlink",hyperlink)
+    		  .replace("&preview",preview)
+    		  .replace("&avatar",avatar)
+    		  .replace("&streamTitle",streamTitle)
+    		  .replace("&authorName",authorName); 
+    	
+    		let add = document.querySelector(".streamcard__all");
+    		element.innerHTML = content;
+    		add.appendChild(element);
+    	}
+    }
+  </script>
+</body>
+</html>
