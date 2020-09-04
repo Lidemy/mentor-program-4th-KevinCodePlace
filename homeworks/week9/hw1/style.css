@@ -1,0 +1,182 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #f7f7f7;
+}
+
+.warning {
+	background: #ffc4c6;
+    color: #a20606;
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.board {
+  background: white;
+  width: 100%;
+  max-width: 700px;
+  margin: 20px auto;
+  padding: 10px 30px;
+  box-shadow: 1px 1px 3px #e8e8e8;
+  border-radius: 5px;
+}
+
+.board__btn {
+  display:inline-block;
+  padding: 10px;
+  border: 1px solid #c2dffb;
+  border-radius: 5px;
+  width: 100px;
+  color: #583c63;
+  font-size: 16px;
+  background: white;
+  text-decoration: none;
+  text-align: center;
+}
+
+h1 {
+display: block;
+  font-size: 2em;
+  margin-block-start: 0.67em;
+  margin-block-end: 0.67em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+
+h2 {
+  display: block;
+  font-size: 1.5em;
+  margin-block-start: 0.83em;
+  margin-block-end: 0.83em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  font-weight: bold;
+}
+
+h3 {
+    display: block;
+    font-size: 1.17em;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+.board__new-comment-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #c2dffb;
+}
+
+.board__submit-btn {
+    padding: 10px;
+    border: 1px solid #c2dffb;
+    border-radius: 5px;
+    width: 100px;
+    color: #583c63;
+    font-size: 16px;
+    background: white;
+}
+
+.missinfo {
+  color:red;
+}
+
+.board__hr {
+    margin: 20px auto;
+    height: 2px;
+    background: #e8e8e8;
+    max-width: 95%;
+}
+
+.board__nickname {
+    margin-bottom: 10px;
+}
+
+.board__nickname input {
+    border: 1px solid #c2dffb;
+    padding: 5px;
+}
+.card {
+    margin: 20px 0;
+    min-height: 70px;
+    display: flex;
+}
+
+.card__avatar {
+    min-width: 50px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: #e4f0fb;
+}
+
+.card__body {
+    margin-left: 10px;
+}
+
+.card__author {
+    color: #5c9edc;
+    font-weight: bold;
+}
+
+.card__time {
+    color: #a0a0a0;
+}
+
+.card__content {
+    margin-top: 8px;
+    max-width: 100%;
+    white-space: pre-line;
+    word-break: break-word;
+}
