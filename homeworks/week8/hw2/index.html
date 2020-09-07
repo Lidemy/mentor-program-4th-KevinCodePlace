@@ -36,8 +36,9 @@
 		  				<div class="info__authorname">x2twins</div>	
 	  				  </div>
 	  				</div>
-	  			</div> -->
+	  			</div> --> 
 	  		</div>
+	  		<div class="streamcard__empty"></div>
 	  	</div>
 	  </div>	
   </div>
@@ -151,6 +152,11 @@
     		element.innerHTML = content;
     		add.appendChild(element);
     	}
+
+    	let element = document.createElement("div");
+    	element.classList.add("streamcard__empty");
+    	let add = document.querySelector(".streamcard__all");
+    	add.appendChild(element);
     }
   </script>
 </body>
