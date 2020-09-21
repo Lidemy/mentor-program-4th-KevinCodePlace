@@ -6,6 +6,12 @@
   
 
   $username = $_SESSION['username'];
+  $getrole = getRolefromUsername($username);
+
+  if ($getrole != 2) {
+  	header("Loaction:./index.php");
+  	die();
+  }
 
   $page = 1;
   if(!empty($_GET['page'])) {
