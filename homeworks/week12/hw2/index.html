@@ -39,10 +39,23 @@
 		    box-shadow: inset 0 -2px 1px rgba(0,0,0,0.03);
 		    font-size: 24px;
     	}
+
+    	.view {
+    		display: flex;
+    	}
+
+    	.view label {
+    		word-break: break-word;
+    		width: 500px;
+    	}
+
     	.toggle {
     		border: solid gray 1px;
+    		height: 40px;
+    		margin-right: 10px;
     		
     	}
+    	
     	ul {
     		list-style: none;
     	}
@@ -179,10 +192,10 @@
         </header>
         <section class="main">
             <ul class="todo-list">
-                <!--  <li>
+                 <!-- <li>
                     <div class="view">
                         <input type="checkbox" class="toggle">
-                        <label class="todo__item">代辦事項一號</label>
+                        <label class="todo__item" >代辦事項一號</label>
                         <button class="destroy"></button>
                     </div>
                 </li> -->
@@ -229,7 +242,7 @@ $('.type__todos').on("keydown", (e) => {
 			    <li>
         			<div class="view">
         				 <input type="checkbox" class="toggle">
-        				 <label class="todo-${id}">${escape(input.val())}</label>
+        				 <label class="todo-${id}" contenteditable="true">${escape(input.val())}</label>
         				 <button class="destroy"></button>
         			</div>
         		</li>`
@@ -247,27 +260,27 @@ $('.type__todos').on("keydown", (e) => {
 })
 
 //變更待辦事項
-$('.todo-list').on("dblclick", (e) => {
-    if (e.target.tagName === "LABEL") {
-        let OriText = e.target.innerText;
-        let updateCommentHTML = `
-				<h6>請更改你的待辦事項</h6>
-				<input class="edit__item" type="text" name="edit" placeholder="${OriText}">
-			`;
-        let updateComment = $(".update__comment");
-        updateComment.append(updateCommentHTML);
-        updateComment.removeClass("hide");
+// $('.todo-list').on("dblclick", (e) => {
+//     if (e.target.tagName === "LABEL") {
+//         let OriText = e.target.innerText;
+//         let updateCommentHTML = `
+// 				<h6>請更改你的待辦事項</h6>
+// 				<input class="edit__item" type="text" name="edit" placeholder="${OriText}">
+// 			`;
+//         let updateComment = $(".update__comment");
+//         updateComment.append(updateCommentHTML);
+//         updateComment.removeClass("hide");
 
-        $('.edit__item').on("keydown", (event) => {
-            if (event.keyCode === 13) {
-                let afterText = $("input[name=edit]").val();
-                e.target.innerText = afterText;
-                updateComment.empty();
-                updateComment.addClass("hide");
-            }
-        })
-    }
-})
+//         $('.edit__item').on("keydown", (event) => {
+//             if (event.keyCode === 13) {
+//                 let afterText = $("input[name=edit]").val();
+//                 e.target.innerText = afterText;
+//                 updateComment.empty();
+//                 updateComment.addClass("hide");
+//             }
+//         })
+//     }
+// })
 
 //刪除代辦事項 
 $('.todo-list').on("click", ".destroy", (e) => {
