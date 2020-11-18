@@ -1,0 +1,37 @@
+
+.mt__21 {
+  margin-top: 21px;
+  font-size: 14px;
+}
+
+.mb__23 {
+  margin-bottom: 23px;
+}
+
+.hide .hidden__error{
+  visibility: hidden;
+}
+
+.hidden__error {
+  margin-top: 10px;
+  color: #e74149;
+}
+
+footer {
+  background-color: black;
+  padding: 26px;
+  font-size: 13px;
+  color: #999999;
+  text-align: center;
+}
+
+@media (max-width: 476px) {
+ .postpone {
+    margin: 129px 10px 30px 10px;
+  }
+
+  .postpone-title {
+    font-size: 24px;
+  }
+}
+
