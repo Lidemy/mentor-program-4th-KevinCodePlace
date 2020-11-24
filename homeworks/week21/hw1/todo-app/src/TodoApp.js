@@ -14,18 +14,18 @@ class TodoApp extends Component {
     }
 
     handleSubmitComment(todo) {
+        let todos = this.state.todos;
         if(!todo) return
         if(!todo.content) return alert('請輸入待辦事項')
-        this.state.todos.push(todo)
+        todos.push(todo)
         this.setState({
-            todos: this.state.todos
+            todos
         })
     }
 
     handleDeleteAll() {
-        const todos = []
         this.setState({
-            todos
+            todos: []
         })
     }
 
