@@ -36,12 +36,12 @@ const AppForm = () => {
     const {nicknameNull, emailNull, phoneNull, activityNull, sourceNull} = checkFormValue;
     
     const handleSummit = (event) => {
+        event.preventDefault();
         const isBlankNull = Object.values(checkFormValue);
         //判斷是否有必填未填
         for(let i = 0; i < isBlankNull.length; i++) {
             if(isBlankNull[i] === '' || isBlankNull[i] === true) {
                 alert('請填入完整資訊');
-                event.preventDefault();
                 return;
             }
         }   
